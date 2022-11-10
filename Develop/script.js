@@ -5,24 +5,20 @@ var SpecialCharacters= ['!','@','#','$','%','&','*','-','<','>','?','.','\'-','=
 var NumericCharacters= ['0','1','2','3','4','5','6','7','8','9']
 
 function retrievePasswordOption() {
-  var length = parseInt(prompt("Choose Length between 8 and 128 Characters"));
+  var length = parseInt(prompt("Choose length between 8 and 128 characters"));
 
   if (Number.isNaN (length)){
     alert("Please provide a number");
     return null;
   }
-  
   if (length < 8) {
     alert("Please add more than 8 characters");
     return null;
-  }
-      
+  }    
   if (length > 128) {
       alert("Please use no more than 128 characters");
       return null;
-  }
-    
-}
+  }   
 
 var hasCapitalCharacters = confirm("Press enter to confirm using capital characters");
 var hasLowerCharacters = confirm("Press enter to confirm using lower case characters");
@@ -34,10 +30,28 @@ if (
   hasLowerCharacters === false &&
   hasSpecialCharacters === false &&
   hasNumericCharacters === false
-) {
-  alert("Please select one character type")
-    return null;
+  ) {
+    alert("Please select one character type");
+  }
+
+var passwordOption = {
+    length: length,
+    hasCapitalCharacters: hasCapitalCharacters,
+    hasLowerCharacters: hasLowerCharacters,
+    hasSpecialCharacters: hasSpecialCharacters,
+    hasNumericCharacters: hasNumericCharacters,
+  };
+
+return passwordOption;
 }
+
+function getRandom(arr) {
+  var randIndex = Math.floor(Math.random() * arr.length);
+  var randElement = arr[randIndex];
+
+  return randElement;
+}
+
 
 // Get references to the #generate element
 var generateBtn = document.querySelector("#generate");
