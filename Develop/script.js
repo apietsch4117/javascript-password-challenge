@@ -29,7 +29,15 @@ var hasLowerCharacters = confirm("Press enter to confirm using lower case charac
 var hasSpecialCharacters = confirm("Press enter to confirm using special characters");
 var hasNumericCharacters = confirm("Press enter to confirm using numeric characters");
 
-
+if (
+  hasCapitalCharacters === false &&
+  hasLowerCharacters === false &&
+  hasSpecialCharacters === false &&
+  hasNumericCharacters === false
+) {
+  alert("Please select one character type")
+    return null;
+}
 
 // Get references to the #generate element
 var generateBtn = document.querySelector("#generate");
