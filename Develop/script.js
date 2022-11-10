@@ -1,7 +1,6 @@
-// assignments go here
 var CapitalCharacters= ['A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Z']
 var LowerCharacters= ['a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z']
-var SpecialCharacters= ['!','@','#','$','%','&','*','-','<','>','?','.','\'-','=',':','~','[',']']
+var SpecialCharacters= ['!','#','$','%','&','(',')','*','+','-','.','/',':',';','<','=','>','?','@','[','\\',']','^','_','`','{','|','}','~']
 var NumericCharacters= ['0','1','2','3','4','5','6','7','8','9']
 
 function retrievePasswordOption() {
@@ -9,27 +8,27 @@ function retrievePasswordOption() {
 
   if (Number.isNaN (length)){
     alert("Please provide a number");
-    return null;
+    return;
   }
   if (length < 8) {
     alert("Please add more than 8 characters");
-    return null;
+    return;
   }    
   if (length > 128) {
       alert("Please use no more than 128 characters");
-      return null;
+      return;
   }   
 
-var hasCapitalCharacters = confirm("Press enter to confirm using capital characters");
-var hasLowerCharacters = confirm("Press enter to confirm using lower case characters");
-var hasSpecialCharacters = confirm("Press enter to confirm using special characters");
-var hasNumericCharacters = confirm("Press enter to confirm using numeric characters");
+var hasCapitalCharacters = confirm("Press OK to confirm using capital characters");
+var hasLowerCharacters = confirm("Press OK to confirm using lower case characters");
+var hasSpecialCharacters = confirm("Press OK to confirm using special characters");
+var hasNumericCharacters = confirm("Press OK to confirm using numeric characters");
 
 if (
-  hasCapitalCharacters === false &&
-  hasLowerCharacters === false &&
-  hasSpecialCharacters === false &&
-  hasNumericCharacters === false
+  !hasCapitalCharacters &&
+  !hasLowerCharacters &&
+  !hasSpecialCharacters &&
+  !hasNumericCharacters 
   ) {
     alert("Please select one character type");
   }
@@ -45,13 +44,12 @@ var passwordOption = {
 return passwordOption;
 }
 
-function getRandom(arr) {
-  var randIndex = Math.floor(Math.random() * arr.length);
-  var randElement = arr[randIndex];
+function getRandom(array) {
+  var randIndex = Math.floor(Math.random() * array.length);
+  var randElement = array[randIndex];
 
   return randElement;
 }
-
 
 // Get references to the #generate element
 var generateBtn = document.querySelector("#generate");
