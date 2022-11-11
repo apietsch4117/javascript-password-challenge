@@ -24,4 +24,3 @@ https://www.youtube.com/watch?v=hdI2bqOjy3c&list=PL6i3a7gBs81IH7HPoFOWWAxrJsRJyP
 
 Github: https://github.com/apietsch4117/javascript-password-challenge
 Deployed Page: https://apietsch4117.github.io/javascript-password-challenge/
-
