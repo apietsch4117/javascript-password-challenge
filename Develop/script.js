@@ -45,16 +45,67 @@ return passwordOption;
 }
 
 function getRandom(array) {
-  var randIndex = Math.floor(Math.random() * array.length);
-  var randElement = array[randIndex];
+  var randomIndex = Math.floor(Math.random() * array.length);
+  var randomElement = array[randomIndex];
 
-  return randElement;
+  return randomElement;
 }
 
-// Get references to the #generate element
+function generatePassword() {
+  var options = getPasswordOptions();
+
+  var result = [];
+  var possibleCharacters = [];
+  var guaranteedCharacters = [];
+
+  if (!options) 
+    return;
+
+  // Loop through each character type
+  if (options.hasSpecialCharacters) {
+    possibleCharacters = possibleCharacters.concat(SpecialCharacters);
+    guaranteedCharacters.push(getRandom(SpecialCharacters));
+  }
+
+  if (options.hasNumericCharacters) {
+    possibleCharacters = possibleCharacters.concat(NumericCharacters);
+    guaranteedCharacters.push(getRandom(NumericCharacters));
+  }
+
+  if (options.hasLowerCharacters) {
+    possibleCharacters = possibleCharacters.concat(LowerCharacters);
+    guaranteedCharacters.push(getRandom(LowerCharacters));
+  }
+
+  if (options.hasCapitalCharacters) {
+    possibleCharacters = possibleCharacters.concat(CapitalCharacters);
+    guaranteedCharacters.push(getRandom(CapitalCharacters));
+  }
+
+  for (var i = 0; i < options.length; i++) {
+    var possibleCharacter = getRandom(possibleCharacters);
+
+    result.push(possibleCharacter);
+  }
+
+  for (var i = 0; i < guaranteedCharacters.length; i++) {
+    result[i] = guaranteedCharacters[i];
+  }
+
+  return result.join('');
+}
+
+var generateBtn = document.querySelector('#generate');
+
+function writePassword() {
+  var password = generatePassword();
+  var passwordText = document.querySelector('#password');
+
+  passwordText.value = password;
+}
+generateBtn.addEventListener('click', writePassword);
 var generateBtn = document.querySelector("#generate");
 
-// Write password to the #password input
 function writePassword() {
   var password = generatePassword(); 
   var passwordText = document.querySelector("#password");
@@ -64,9 +115,6 @@ function writePassword() {
 }
 function generatePassword() {
 retrievePasswordOption(); 
-
 }
 
-
-// Add event listener to generate button
 generateBtn.addEventListener("click", writePassword);
