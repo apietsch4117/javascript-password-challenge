@@ -149,9 +149,6 @@ function generatePassword() {
   var possibleCharacters = [];
   var guaranteedCharacters = [];
 
-  //if (!options) return;
-
-  // Loop through each character type
   if (options.hasSpecialCharacters) {
     possibleCharacters = possibleCharacters.concat(SpecialCharacters);
     guaranteedCharacters.push(getRandom(SpecialCharacters));
@@ -195,8 +192,3 @@ function writePassword() {
 }
 
 generateBtn.addEventListener("click", writePassword);
-
-
-// function generatePassword() {
-// retrievePasswordOption();
-// }
